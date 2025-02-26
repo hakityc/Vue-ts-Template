@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@iconify/json": "^2.2.97",
@@ -14,9 +16,11 @@
     "@vueuse/core": "^10.7.2",
     "ant-design-vue": "^4.1.0",
     "axios": "^1.6.5",
+    "axios-retry": "^4.5.0",
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",
+    "qs": "^6.14.0",
     "unocss": "^0.58.3",
     "unplugin-auto-import": "^0.17.3",
     "unplugin-icons": "^0.18.2",
@@ -26,10 +30,12 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.3.0",
     "@types/lodash": "^4.14.202",
     "@types/node": "^18.15.11",
     "@types/uuid": "^9.0.7",
     "@vitejs/plugin-vue": "^5.0.3",
+    "eslint": "^9.21.0",
     "typescript": "^4.9.3",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^5.0.11",
