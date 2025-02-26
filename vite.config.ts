@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import unocss from 'unocss/vite'
@@ -29,6 +30,16 @@ export default defineConfig({
     }),
     // eslint(),
   ],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    server: {
+      deps: {
+        inline: [],
+      },
+    },
+    setupFiles: ['./vitest.setup.ts'],
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'), // 路径别名
