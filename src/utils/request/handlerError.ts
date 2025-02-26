@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios'
+import type { AxiosError } from 'axios'
 
 interface CmdError {
   isCmdError: true
@@ -7,20 +7,22 @@ interface CmdError {
   message: string
 }
 
-const isAxiosError = (error: any): error is AxiosError => {
+function isAxiosError(error: any): error is AxiosError {
   return error.config
 }
 
-const isCmdError = (error: any): error is CmdError => {
+function isCmdError(error: any): error is CmdError {
   return error.isCmdError
 }
 
-export const handleError = (error: unknown) => {
+export function handleError(error: unknown) {
   if (isAxiosError(error)) {
     console.error('isAxiosError')
-  } else if (isCmdError(error)) {
+  }
+  else if (isCmdError(error)) {
     console.error(error.message)
-  } else {
+  }
+  else {
     console.error(error)
   }
 }

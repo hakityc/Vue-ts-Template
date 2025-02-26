@@ -1,19 +1,19 @@
-import { createApp } from "vue"
+import { createApp } from 'vue'
+import App from './App.vue'
+import { setupRouter } from './routers'
+import { setupStore } from './stores'
 import '@unocss/reset/tailwind.css'
-import "./style.css"
-import App from "./App.vue"
+import './style.css'
 import 'virtual:uno.css'
-import { setupRouter } from "./routers"
-import { setupStore } from "./stores"
 
 const app = createApp(App)
 
-const setupPlugin = () => {}
+function setupPlugin() {}
 
-const setupApp = () => {
+function setupApp() {
   setupStore(app)
   setupRouter(app)
-  app.mount("#app")
+  app.mount('#app')
 }
 
 setupPlugin()

@@ -1,5 +1,6 @@
-import _axios, { type AxiosResponse } from 'axios'
-import axiosRetry from "axios-retry";
+import type { AxiosResponse } from 'axios'
+import _axios from 'axios'
+import axiosRetry from 'axios-retry'
 
 export interface ResData {
   code: number
@@ -33,10 +34,10 @@ axiosRetry(instance, {
   retries: 3, // 设置自动发送请求次数
   shouldResetTimeout: true, // 重试请求超时时间
   retryCondition: (error: any) => {
-    if (!error.config?.retry) throw error;
-    return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.code === "ECONNABORTED" || error.message.includes("timeout");
+    if (!error.config?.retry)
+      throw error
+    return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.code === 'ECONNABORTED' || error.message.includes('timeout')
   },
-});
-
+})
 
 export const axios = instance

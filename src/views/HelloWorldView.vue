@@ -1,3 +1,5 @@
+<script lang="ts" setup></script>
+
 <template>
   <div class="h-full text-center flex select-none all:transition-400">
     <div class="ma">
@@ -9,7 +11,5 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup></script>
 
 <style lang="less" scoped></style>

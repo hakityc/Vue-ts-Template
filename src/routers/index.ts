@@ -1,21 +1,22 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 import { fetchChildrenRoutes } from '@/utils/router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
   {
     name: 'home',
     path: '/',
     component: () => import('@/views/HomeView.vue'),
-    children: [...fetchChildrenRoutes()]
-  }
+    children: [...fetchChildrenRoutes()],
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
-export const setupRouter = async (app: any) => {
+export async function setupRouter(app: any) {
   app.use(router)
   await router.isReady()
 }
