@@ -9,10 +9,23 @@ export interface ResData {
 }
 
 export interface CmdError {
-  isCmdError: true
+  isCmdError: boolean
   code: number
   data: any
   message: string
+}
+
+class CommandError extends Error implements CmdError {
+  isCmdError = true
+  code: number
+  data: any
+
+  constructor(error: CmdError) {
+    super(error.message)
+    this.code = error.code
+    this.data = error.data
+    this.name = 'CommandError'
+  }
 }
 
 const instance = _axios.create({
@@ -21,10 +34,10 @@ const instance = _axios.create({
 
 instance.interceptors.response.use((response: AxiosResponse<ResData>) => {
   if (response.data.code !== 0) {
-    return Promise.reject({
+    return Promise.reject(new CommandError({
       isCmdError: true,
       ...response.data,
-    })
+    }))
   }
   response.data = response.data.data
   return response
