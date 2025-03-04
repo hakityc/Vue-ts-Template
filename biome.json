@@ -11,7 +11,9 @@
   },
   "formatter": {
     "enabled": true,
-    "indentStyle": "tab"
+    "indentStyle": "tab",
+    "lineWidth": 100,
+    "attributePosition": "multiline"
   },
   "organizeImports": {
     "enabled": true
@@ -19,12 +21,19 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "complexity": {
+        "useSimplifiedLogicExpression": "warn"
+      }
     }
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double"
+      "quoteStyle": "single",
+      "semicolons": "asNeeded"
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": false
     }
   }
 }
