@@ -11,7 +11,8 @@
     "lint:fix": "eslint --fix",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "@iconify/json": "^2.2.97",
@@ -40,11 +41,18 @@
     "@types/uuid": "^9.0.7",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/test-utils": "^2.4.6",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
+    "lint-staged": "^15.4.3",
     "typescript": "^5.0.2",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^5.0.10",
     "vitest": "^1.0.4",
     "vue-tsc": "^1.8.25"
+  },
+  "lint-staged": {
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   }
 }
